@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>@yield('title') - {{$config->title}}</title>
+    <title>@yield('title')</title>
     <link rel="icon" type="image/x-icon" href="{{asset('front/')}}/assets/favicon.png" /><!--favicon.ico-->
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -20,7 +20,11 @@
 <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="{{route('homepage')}}">
-            Blog Sitesi <img src="{{asset($config->logo)}}" width="100">
+            @if($config->logo!=null)
+                <img src="{{asset($config->logo)}}" width="100">
+            @else
+            {{$config->title}}
+            @endif
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
@@ -54,5 +58,3 @@
 </header>
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-    </div>
-</div>

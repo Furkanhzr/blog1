@@ -13,10 +13,14 @@ use App\Models\Category;
 use App\Models\Article;
 use App\Models\Page;
 use App\Models\Contact;
+use App\Models\Config;
 
 class HomePage extends Controller
 {
     public function __construct() { //construct tüm fonksiyonlarda çalışmasını sağlayan bir fonksiyon.Kod tekrarından kurtulmamıza yarar.
+        if (Config::find(1)->active==0) {
+            return redirect()->to()
+        }
         view()->share('pages',Page::orderBy('order','ASC')->get());
         view()->share('categories',Category::inRandomOrder()->get());
         //birinci kısma paylaşmak istediğimiz değişkenin adını ikinci kısm ise değikeni yazyıoruz.
