@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
+
         Schema::table('articles', function (Blueprint $table) {
             $table->integer('status')->default(0)->comment('0:pasif, 1:aktif')->after('hit');
             $table->softDeletes()->after('status');
